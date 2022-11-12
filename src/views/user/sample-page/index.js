@@ -1,20 +1,51 @@
 // material-ui
 import { Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
+// material-ui
+import { Grid } from '@mui/material';
+import { gridSpacing } from 'store/constant';
 
-// project imports
-import MainCard from 'ui-component/cards/MainCard';
+import SampleService from 'services/sample/SampleService';
+import ServiceCaller from 'services/ServiceCaller';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
-const SamplePage = () => (
-    <MainCard title="Sample Card-1">
-        <Typography variant="body2">
-            Lorem ipsum dolor sit amen, consenter nipissing eli, sed do elusion tempos incident ut laborers et doolie magna alissa. Ut enif
-            ad minim venice, quin nostrum exercitation illampu laborings nisi ut liquid ex ea commons construal. Duos aube grue dolor in
-            reprehended in voltage veil esse colum doolie eu fujian bulla parian. Exceptive sin ocean cuspidate non president, sunk in culpa
-            qui officiate descent molls anim id est labours.
-        </Typography>
-    </MainCard>
-);
+const SamplePage = () => {
+    const [data, setData] = useState([]);
+    const [isSuccess, setSuccess] = useState(false);
+    const getData = () => {
+        let serviceCaller = new ServiceCaller();
+        SampleService.getProducts(serviceCaller, '', (res) => {
+            setSuccess(true);
+            setData(res.products);
+        }, (err) => {
+            setSuccess(false);
+            console.log(err);
+        })
+      }
+    
+      useEffect(() => {
+        getData()
+      }, []);    
+
+    return(
+        <Grid container spacing={gridSpacing}>
+            <Grid item xs={12}>
+                {data?.map((product) => (
+                         <Typography variant="body2">
+                            {product.title}
+                        </Typography>
+                    )
+                )}:(
+                    <Typography variant="body2">
+                        No Product Data
+                    </Typography>
+                )
+                
+            
+            </Grid>
+        </Grid>
+    )
+};
 
 export default SamplePage;
