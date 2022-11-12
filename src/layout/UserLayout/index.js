@@ -10,7 +10,7 @@ import { AppBar, Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material'
 import Breadcrumbs from 'ui-component/extended/Breadcrumbs';
 import Header from './Header';
 import Sidebar from './Sidebar';
-import navigation from 'menu-items';
+import navigation from 'menu-items/user';
 import { drawerWidth } from 'store/constant';
 import { SET_MENU } from 'store/actions';
 

@@ -2,18 +2,18 @@ import { lazy } from 'react';
 
 // project imports
 import Loadable from 'ui-component/Loadable';
-import MinimalLayout from 'layout/MinimalLayout';
+import AdminLayout from 'layout/AdminLayout';
 
 // login option 3 routing
 // dashboard routing
 const Dashboard = Loadable(lazy(() => import('views/admin/dashboard')));
-const Dashboard2 = Loadable(lazy(() => import('views/admin/dashboard copy')));
+const Dashboard2 = Loadable(lazy(() => import('views/admin/dashboard2')));
 
 // ==============================|| AUTHENTICATION ROUTING ||============================== //
 
 const AuthenticationRoutes = {
     path: '/',
-    element: <MinimalLayout />,
+    element: <AdminLayout />,
     children: [
         {
             path: '/admin/dashboard',

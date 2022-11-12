@@ -14,7 +14,15 @@ const other = {
             id: 'sample-page',
             title: 'Sample Page',
             type: 'item',
-            url: '/sample-page',
+            url: '/user/sample-page',
+            icon: icons.IconBrandChrome,
+            breadcrumbs: false
+        },
+        {
+            id: 'sample-page2',
+            title: 'Sample Page2',
+            type: 'item',
+            url: '/user/sample-page2',
             icon: icons.IconBrandChrome,
             breadcrumbs: false
         }
